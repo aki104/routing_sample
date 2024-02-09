@@ -1,37 +1,33 @@
-import 'package:first_sample/extention/context.dart';
+import 'package:first_sample/ui/home/01/home_screen.dart';
+import 'package:first_sample/ui/login/01/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/application/size.dart';
-import '../../../util/key/navigation_key.dart';
+import '../../bottom_bar/01/app_navigation_bar_screen.dart';
+import '../../root/01/root_screen.dart';
 
 
-
-class SplashScreen extends ConsumerStatefulWidget {
-  const SplashScreen({super.key});
+class Splash01 extends ConsumerStatefulWidget {
+  const Splash01({super.key});
   static String rootName = '/';
   static String rootPath = '/';
 
   @override
-  ConsumerState<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<Splash01> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends ConsumerState<Splash01> {
   @override
   void initState() {
     Future(() async {
-      await appInitialize();
       if (!mounted) return;
-      // context.goNamed(Root.rootName);
+      // context.goNamed(Root01.rootName);
+      context.go(Root01.rootPath);
+      // context.go(Home01.rootPath);
     });
     super.initState();
-  }
-
-  Future<void> appInitialize() async {
-    SizeConfig.init(
-        NavigationKey.currentContext?.screenSize); //画面サイズ取得
   }
 
   @override

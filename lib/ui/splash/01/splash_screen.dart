@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../bottom_bar/01/app_navigation_bar_screen.dart';
 import '../../root/01/root_screen.dart';
 
 
@@ -38,7 +37,7 @@ class _SplashScreenState extends ConsumerState<Splash01> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoActivityIndicator(),
+            // CupertinoActivityIndicator(),
             Text('loading')
           ],
         ),

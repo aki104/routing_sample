@@ -24,7 +24,6 @@ class _RootScreenState extends ConsumerState<Root01> {
     final root = ref.read(rootProvider);
     Future(() async {
       if (!mounted) return;
-      // context.goNamed(Root01.rootName);
       if (root == 0) {
         context.go(Login01.rootPath);
       } else if (root == 1) {
@@ -32,8 +31,6 @@ class _RootScreenState extends ConsumerState<Root01> {
       } else {
         context.go(Login01.rootPath);
       }
-
-      // context.go(Home01.rootPath);
     });
     super.initState();
   }
@@ -41,7 +38,6 @@ class _RootScreenState extends ConsumerState<Root01> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      // backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

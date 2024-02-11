@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../root/01/root_screen.dart';
 
 
 class Setting01 extends ConsumerWidget {
@@ -8,8 +11,14 @@ class Setting01 extends ConsumerWidget {
  @override
  Widget build(BuildContext context, WidgetRef ref) {
  return Scaffold(
-   body: Placeholder(
-     child: Text('setting'),
+   body: Center(
+     child: ElevatedButton(
+       onPressed: (){
+         ref.read(rootProvider.notifier).update((state) => 0);
+         context.go('/');
+       },
+       child: Text('logout'),
+     ),
    ),
  );
  }

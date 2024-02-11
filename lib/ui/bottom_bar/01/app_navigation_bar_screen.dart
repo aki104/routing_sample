@@ -15,29 +15,32 @@ class AppNavigationBar01 extends StatelessWidget {
     return WillPopScope(
       onWillPop: _willPopCallback,
       child: Scaffold(
-        body: navigationShell,// body: navigationShellは、IndexedStackをラップしています。
-        bottomNavigationBar: BottomNavigationBar(// bottomNavigationBar: BottomNavigationBarは、ボトムナビゲーションバーを実装しています。
-          currentIndex: navigationShell.currentIndex,// currentIndex: navigationShell.currentIndexは、現在のインデックスを取得しています。
-          items: const [
-            // BottomNavigationBarItemは、ボトムナビゲーションバーのアイテムを実装しています。
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: 'リスト'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: '設定'),
-          ],
-          onTap: _onTap,
+        body: navigationShell,
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            border: Border(top: BorderSide(
+              color: Colors.amberAccent
+            )),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: navigationShell.currentIndex,// currentIndex: navigationShell.currentIndexは、現在のインデックスを取得。
+            items: const [
+              // ボトムナビゲーションバーのアイテム。
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
+              BottomNavigationBarItem(icon: Icon(Icons.list), label: 'リスト'),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), label: '設定'),
+            ],
+            onTap: _onTap,
+          ),
         ),
       ),
     );
   }
-  // _onTapメソッドは、ボトムナビゲーションバーのアイテムをタップしたときに、
-  // そのアイテムのインデックスを取得して、そのインデックスに対応するブランチにナビゲートします。
+
+  // アイテムをタップ時にアイテムのインデックスを取得して、そのインデックスに対応するブランチにナビゲートする。
   void _onTap(index) {
     navigationShell.goBranch(
       index,
-      // ボトムナビゲーションバーを使用する際の一般的なパターンは、次のようなものです。
-      // 既にアクティブになっているアイテムをタップしたときに、最初の場所に移動することをサポートすることです。
-      // この例では、この動作をサポートする方法を示します。この例では、この動作をサポートする方法を示します、
-      // goBranchのinitialLocationパラメータを使用します。
       initialLocation: index == navigationShell.currentIndex,
     );
   }

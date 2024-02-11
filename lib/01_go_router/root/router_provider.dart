@@ -116,7 +116,6 @@ final goRouter = GoRouter(
   ],
 );
 
-
 void route(String value, {RouteType type = RouteType.name}) {
   switch (type) {
     case RouteType.name:
@@ -128,6 +127,4 @@ void route(String value, {RouteType type = RouteType.name}) {
   }
 }
 
-
 enum RouteType { push, path, name }
-

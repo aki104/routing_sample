@@ -1,26 +1,26 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:first_sample/02_auto_router/root/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../root/01/root_screen.dart';
-
-
-class Splash01 extends ConsumerStatefulWidget {
-  const Splash01({super.key});
-  static String rootName = '/';
-  static String rootPath = '/';
+@RoutePage()
+class Splash02Page extends ConsumerStatefulWidget {
+  const Splash02Page({super.key});
 
   @override
-  ConsumerState<Splash01> createState() => _SplashScreenState();
+  ConsumerState<Splash02Page> createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends ConsumerState<Splash01> {
+class _SplashPageState extends ConsumerState<Splash02Page> {
   @override
   void initState() {
+    print('splashInit');
     Future(() async {
       if (!mounted) return;
+      context.router.push(const Login02Route());
       // context.goNamed(Root01.rootName);
-      context.go(Root01.rootPath);
+
       // context.go(Home01.rootPath);
     });
     super.initState();
@@ -35,7 +35,7 @@ class _SplashScreenState extends ConsumerState<Splash01> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // CupertinoActivityIndicator(),
-            Text('loading')
+            Text('splash')
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class Detail201 extends ConsumerWidget {
  const Detail201({Key? key}) : super(key: key);
@@ -8,9 +9,20 @@ class Detail201 extends ConsumerWidget {
 
  @override
  Widget build(BuildContext context, WidgetRef ref) {
- return const Scaffold(
+ return  Scaffold(
    body: Center(
-     child: Text('Detail2'),
+     child: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+         Text('Detail2'),
+         ElevatedButton(onPressed: (){
+           context.pop();
+         }, child: Text('戻る')),
+         ElevatedButton(onPressed: (){
+           context.go('/root/home');
+         }, child: Text('homeまで戻る'))
+       ],
+     ),
    ),
  );
  }

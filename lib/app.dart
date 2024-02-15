@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '01_go_router/root/router_provider.dart';
+import '02_auto_router/root/app_router.dart';
+import 'key/navigation_key.dart';
 import 'key/scaffold_key.dart';
 
 ///GoRouter使用時
@@ -51,26 +53,34 @@ class App02 extends ConsumerStatefulWidget {
 }
 
 class App02State extends ConsumerState<App02> {
+
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = ref.read(appRouterProvider); //追加
     return  MaterialApp.router(
       builder: (context, child) {
-        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1), child: child!);
+        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1), child: Navigator(
+          onPopPage: (route, dynamic _) => false,
+          key: NavigationKey.rootNavigationKey,
+          pages: [
+            MaterialPage(child: child ?? SizedBox.shrink())
+          ],
+        ));
       },
+
       scaffoldMessengerKey: ScaffoldKey.scaffoldMessengerKey,
-      routerConfig: goRouter,
+      routerConfig: appRouter.config(),
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
+      // localizationsDelegates: const [
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      // ],
     );
   }
 }
